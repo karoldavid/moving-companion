@@ -22,17 +22,19 @@ function loadData() {
     // NY Times AJAX request
     // http://api.nytimes.com/svc/search/v2/articlesearch.json?q=new+york+times&page=2&sort=oldest&api-key=####
     // <li class="article"><a href='#'>Link to Article</a><p>Text of first paragraph</p></li>
-    var NYtimesApiKey = '0ecda6d95b828817edbcfef8445c1aeb:7:72206312';
-    var NYtimesBaseUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json';
+    var nytApiKey = '0ecda6d95b828817edbcfef8445c1aeb:7:72206312';
+    var nytBaseUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json';
     var query = cityStr;
-    var URL =  NYtimesBaseUrl + '?q=' + query + '&sort=newest&' + '&api-key=' + NYtimesApiKey;
-
-    $.getJSON(URL, function (data) {
+    var nytUrl =  nytBaseUrl + '?q=' + query + '&sort=newest&' + '&api-key=' + nytApiKey;
+    
+    $.getJSON(nytUrl, function (data) {
     	$nytHeaderElem.text('New York Times Articles About ' + cityStr);
     	var articles = data.response.docs;
     	$.each( articles, function( i, article) {
             $nytElem.append('<li class="article"><a href=' + article.web_url + '>' + article.headline.main + '</a><p>' + article.snippet + '</p></li>');
         });
+    }).error(function(e) {
+    	$nytHeaderElem.text('Sorry, An Error Occured. New York Times Articles Could Not Be Loaded.');
     });
 
     return false;
