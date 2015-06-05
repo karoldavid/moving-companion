@@ -41,7 +41,7 @@ function loadData() {
 
     var query = cityStr,
         dt = 'jsonp',
-        wikiBase = 'http://en.wikipediuuuua.org/w/api.php',
+        wikiBase = 'http://en.wikipedia.org/w/api.php',
         wikiUrl = wikiBase + '?action=opensearch&search=' + query + '&format=json&callback=wikiCallback';
 
     var wikiRequestTimeout = setTimeout(function() {
