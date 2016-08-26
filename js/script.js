@@ -16,7 +16,7 @@ function loadData() {
     var cityStr = $('#city').val();
     var address = streetStr + ',' + cityStr;
     $greeting.text('So, you want to live at ' + address + '?');
-    var streetviewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + address + '&key=AIzaSyDB2twrWRm7tw2ZtFIWakViLeMz58U9QL8';
+    var streetviewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + address + ''; //'&key=AIzaSyDB2twrWRm7tw2ZtFIWakViLeMz58U9QL8';
     $body.append('<img class="bgimg" src="' + streetviewUrl + '">');
 
     // load nytimes
