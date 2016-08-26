@@ -25,7 +25,7 @@ function loadData() {
 
     // load nytimes
     var nytApiKey = '0ecda6d95b828817edbcfef8445c1aeb:7:72206312';
-    var nytBaseUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json';
+    var nytBaseUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json';
     var query = cityStr;
     var nytUrl = nytBaseUrl + '?q=' + query + '&sort=newest&' + '&api-key=' + nytApiKey;
 
@@ -46,7 +46,7 @@ function loadData() {
 
     var query = cityStr,
         dt = 'jsonp',
-        wikiBase = 'http://en.wikipedia.org/w/api.php',
+        wikiBase = 'https://en.wikipedia.org/w/api.php',
         wikiUrl = wikiBase + '?action=opensearch&search=' + query + '&format=json&callback=wikiCallback';
 
     var wikiRequestTimeout = setTimeout(function() {
