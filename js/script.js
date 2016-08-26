@@ -16,17 +16,22 @@ function loadData() {
     var cityStr = $('#city').val();
     var address = streetStr + ',' + cityStr;
     $greeting.text('So, you want to live at ' + address + '?');
-    var streetviewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + address + '';
+    var streetviewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=600x400&location=' + address + '&key=AIzaSyDB2twrWRm7tw2ZtFIWakViLeMz58U9QL8';
     $body.append('<img class="bgimg" src="' + streetviewUrl + '">');
+
+    https://maps.googleapis.com/maps/api/streetview?size=600x300&location=46.414382,10.013988&heading=151.78&pitch=-0.76&key=YOUR_API_KEY
+
+    console.log(streetviewUrl);
 
     // load nytimes
     var nytApiKey = '0ecda6d95b828817edbcfef8445c1aeb:7:72206312';
     var nytBaseUrl = 'http://api.nytimes.com/svc/search/v2/articlesearch.json';
     var query = cityStr;
     var nytUrl = nytBaseUrl + '?q=' + query + '&sort=newest&' + '&api-key=' + nytApiKey;
-    
+
     $.getJSON(nytUrl, function (data) {
     	$nytHeaderElem.text('New York Times Articles About ' + cityStr);
+    	console.log("data: ", data);
     	var articles = data.response.docs;
     	$.each( articles, function( i, article) {
             $nytElem.append('<li class="article"><a href=' + article.web_url + '>' + article.headline.main + '</a><p>' + article.snippet + '</p></li>');
